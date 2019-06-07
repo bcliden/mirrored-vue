@@ -3,17 +3,13 @@
     class="mirror"
     :style="{transform: `rotate${rotate}(0.5turn)`}"
   >
-    {{ text }}
+    <slot />
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    text: {
-      type: String,
-      default: '',
-    },
     rotate: {
       type: String,
       default: 'X',

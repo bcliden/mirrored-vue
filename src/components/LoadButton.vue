@@ -13,7 +13,7 @@ export default {
       axios.get('https://api.punkapi.com/v2/beers/random')
         .then((response) => {
           const beer = response.data[0];
-          this.$emit('newContent', `${beer.name}. ${beer.tagline} ${beer.description}`);
+          this.$emit('emitText', `${beer.name}. ${beer.tagline} ${beer.description}`);
         })
         .catch(err => console.error(err));
     },

@@ -1,33 +1,35 @@
 <template>
   <div id="app">
-    <mirror-panel
-      :text="text"
-      :rotate="'X'"
-    />
+    <mirror-panel :rotate="'X'">
+      {{ text }}
+    </mirror-panel>
     <controls
       :text="text"
-      @valueChange="updateText"
-    />
-    <mirror-panel
-      :text="text"
-      :rotate="'Y'"
-    />
+      @emitText="updateText"
+    >
+      <load-button @emitText="updateText" />
+    </controls>
+    <mirror-panel :rotate="'Y'">
+      {{ text }}
+    </mirror-panel>
   </div>
 </template>
 
 <script>
 import MirrorPanel from './components/MirrorPanel.vue';
 import Controls from './components/Controls.vue';
+import LoadButton from './components/LoadButton.vue';
 
 export default {
   name: 'App',
   components: {
     MirrorPanel,
     Controls,
+    LoadButton,
   },
   data() {
     return {
-      text: 'type some text!',
+      text: '',
     };
   },
   methods: {

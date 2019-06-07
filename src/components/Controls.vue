@@ -2,38 +2,28 @@
   <div class="controls">
     <label>words:
       <input
-        v-model="inputText"
         type="text"
-        :placeholder="text"
-        @input="$emit('valueChange', inputText)"
+        :value="text"
+        placeholder="type some text"
+        @input="emitChange"
       >
     </label>
-    <load-button @newContent="loadText" />
+    <slot />
   </div>
 </template>
 
 <script>
-import LoadButton from './LoadButton.vue';
-
 export default {
-  components: {
-    LoadButton,
-  },
   props: {
     text: {
       type: String,
       default: '',
     },
   },
-  data() {
-    return {
-      inputText: this.text,
-    };
-  },
   methods: {
-    loadText(e) {
-      this.inputText = e;
-      this.$emit('valueChange', this.inputText);
+    emitChange(e) {
+      // console.log(e);
+      this.$emit('emitText', e.target.value);
     },
   },
 };
