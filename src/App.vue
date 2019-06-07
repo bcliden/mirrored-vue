@@ -1,28 +1,76 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <mirror-panel
+      :text="text"
+      :rotate="'X'"
+    />
+    <controls
+      :text="text"
+      @valueChange="updateText"
+    />
+    <mirror-panel
+      :text="text"
+      :rotate="'Y'"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue';
+import MirrorPanel from './components/MirrorPanel.vue';
+import Controls from './components/Controls.vue';
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
-    HelloWorld,
+    MirrorPanel,
+    Controls,
+  },
+  data() {
+    return {
+      text: 'type some text!',
+    };
+  },
+  methods: {
+    updateText(e) {
+      this.text = e;
+    },
   },
 };
 </script>
 
 <style>
+:root {
+  --vue-green: #41b883;
+  --vue-dark-green: #35495e;
+}
+
+html,
+body,
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+#app {
+  font-family: "Lora", "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  /* color: #2c3e50; */
+  color: var(--vue-dark-green);
+  /* margin-top: 60px; */
+
+  /* legacy css below */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background: #fdfdfd;
+}
+
+mirror-panel {
+  color: red;
 }
 </style>
