@@ -27,6 +27,7 @@ button {
   padding: 5px 10px;
   background-color: var(--vue-green);
   border: 1px solid var(--vue-dark-green);
+  cursor: pointer;
 
   margin-left: 0.5rem;
 }
